@@ -1,3 +1,5 @@
+// File: api/routes/index.js
+
 const express = require('express');
 const authRoutes = require('./auth');
 const mealRoutes = require('./meals');

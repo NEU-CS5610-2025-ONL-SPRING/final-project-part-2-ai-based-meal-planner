@@ -1,3 +1,5 @@
+// File: api/routes/auth.js
+
 console.log("🔍 You are in the REAL auth.js");
 require('dotenv').config(); 
 
