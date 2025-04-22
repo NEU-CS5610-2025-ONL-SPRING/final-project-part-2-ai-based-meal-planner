@@ -1,6 +1,8 @@
 // File: client/src/pages/AddMeal.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE } from '../config';
+
 
 export default function AddMeal() {
   const [form, setForm] = useState({ name: '', description: '', ingredients: '', instructions: '' });
@@ -8,7 +10,7 @@ export default function AddMeal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/meals', {
+    const res = await fetch(`${API_BASE}/api/meals`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

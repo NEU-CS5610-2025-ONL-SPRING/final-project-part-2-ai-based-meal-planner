@@ -20,7 +20,7 @@ export default function Register() {
     })
     console.log(resTest)
 
-    const res = await fetch('https://final-project-part-2-ai-based-meal.onrender.com/api/auth/register', {
+    const res = await fetch(`${API_BASE}/api/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),

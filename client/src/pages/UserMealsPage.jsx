@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MealModal from '../components/MealModal';
+import { API_BASE } from '../config';
 
 export default function UserMealsPage() {
   const [meals, setMeals] = useState([]);
@@ -12,13 +13,13 @@ export default function UserMealsPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/api/meals', { credentials: 'include' })
+    fetch(`${API_BASE}/api/meals`, { credentials: 'include' })
       .then(res => res.json())
       .then(setMeals);
   }, []);
 
   const handleLogout = async () => {
-    await fetch('/api/auth/logout', {
+    await fetch(`${API_BASE}/api/auth/logout`, {
       method: 'POST',
       credentials: 'include',
     });
@@ -26,7 +27,7 @@ export default function UserMealsPage() {
   };
 
   const handleView = async (id) => {
-    const res = await fetch(`/api/meals/${id}`, { credentials: 'include' });
+    const res = await fetch(`${API_BASE}/api/meals/${id}`, { credentials: 'include' });
     const meal = await res.json();
     setSelectedMeal({
       id: meal.id,
@@ -41,7 +42,7 @@ export default function UserMealsPage() {
 
   const handleDelete = async () => {
     if (!window.confirm('Are you sure you want to delete this meal?')) return;
-    await fetch(`/api/meals/${selectedMeal.id}`, {
+    await fetch(`${API_BASE}/api/meals/${selectedMeal.id}`, {
       method: 'DELETE',
       credentials: 'include'
     });
@@ -52,8 +53,8 @@ export default function UserMealsPage() {
   const handleSave = async () => {
     const method = selectedMeal.id ? 'PUT' : 'POST';
     const url = selectedMeal.id
-      ? `/api/meals/${selectedMeal.id}`
-      : '/api/meals';
+      ? `${API_BASE}/api/meals/${selectedMeal.id}`
+      : `${API_BASE}/api/meals`;
 
     const res = await fetch(url, {
       method,
@@ -76,7 +77,7 @@ export default function UserMealsPage() {
   };
 
   const handleGetSuggestions = async () => {
-    const res = await fetch('/api/meal-ideas', {
+    const res = await fetch(`${API_BASE}/api/meal-ideas`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

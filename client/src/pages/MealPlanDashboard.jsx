@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MealModal from '../components/MealModal';
 import Select from 'react-select';
+import { API_BASE } from '../config';
 
 const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const mealTimes = ['Breakfast', 'Lunch', 'Dinner'];
@@ -18,11 +19,11 @@ export default function MealPlanDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/api/mealplans', { credentials: 'include' })
+    fetch(`${API_BASE}/api/mealplans`, { credentials: 'include' })
       .then(res => res.json())
       .then(setPlans);
 
-    fetch('/api/meals', { credentials: 'include' })
+    fetch(`${API_BASE}/api/meals`, { credentials: 'include' })
       .then(res => res.json())
       .then(setMeals);
   }, []);
@@ -39,7 +40,7 @@ export default function MealPlanDashboard() {
   })();
 
   const handleAssign = async (date, mealTime, mealId) => {
-    const res = await fetch('/api/mealplans', {
+    const res = await fetch(`${API_BASE}/api/mealplans`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -56,7 +57,7 @@ export default function MealPlanDashboard() {
   };
 
   const handleUnassign = async (planId) => {
-    const res = await fetch(`/api/mealplans/${planId}`, {
+    const res = await fetch(`${API_BASE}/api/mealplans/${planId}`, {
       method: 'DELETE',
       credentials: 'include'
     });
@@ -68,7 +69,7 @@ export default function MealPlanDashboard() {
   };
 
   const handleView = async (id) => {
-    const res = await fetch(`/api/meals/${id}`, { credentials: 'include' });
+    const res = await fetch(`${API_BASE}/api/meals/${id}`, { credentials: 'include' });
     const meal = await res.json();
     setSelectedMeal(meal);
     setIsEditing(false);

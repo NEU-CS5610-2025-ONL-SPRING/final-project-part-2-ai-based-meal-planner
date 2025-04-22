@@ -2,6 +2,7 @@
 //this page is no longer needed
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { API_BASE } from '../config';
 
 export default function MealDetails() {
   const { id } = useParams();
@@ -10,7 +11,7 @@ export default function MealDetails() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`/api/meals/${id}`, { credentials: 'include' })
+    fetch(`${API_BASE}/api/meals/${id}`, { credentials: 'include' })
       .then(res => res.json())
       .then(setMeal);
   }, [id]);
@@ -18,7 +19,7 @@ export default function MealDetails() {
   const handleDelete = async () => {
     if (!window.confirm('Are you sure you want to delete this meal?')) return;
 
-    await fetch(`/api/meals/${id}`, {
+    await fetch(`${API_BASE}/api/meals/${id}`, {
       method: 'DELETE',
       credentials: 'include',
     });
@@ -28,7 +29,7 @@ export default function MealDetails() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`/api/meals/${id}`, {
+    const res = await fetch(`${API_BASE}/api/meals/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
