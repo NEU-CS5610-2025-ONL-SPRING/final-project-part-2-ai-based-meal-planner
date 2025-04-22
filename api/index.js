@@ -11,7 +11,7 @@ const mealplanRoutes = require('./routes/mealplans');
 const mealIdeasRoute = require('./routes/mealIdeas');
 
 
-app.use(cors());
+app.use(cors({credentials: true, origin: 'https://client-8rxtrns7x-xiangying-suns-projects.vercel.app'}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api', routes);

@@ -12,14 +12,6 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("handleSubmit");
-
-    const resTest = await fetch('https://final-project-part-2-ai-based-meal.onrender.com/api/ping', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-    console.log(resTest)
-
     const res = await fetch(`${API_BASE}/api/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
