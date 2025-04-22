@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
 //    });
   
 
-  res.cookie('token', token, { httpOnly: true, sameSite: 'None' });
+  res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'None' });
   res.json({ success: true });
 });
 
