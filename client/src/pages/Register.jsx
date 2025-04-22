@@ -11,7 +11,7 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('${API_BASE}/api/auth/register', {
+    const res = await fetch(`${API_BASE}/api/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
