@@ -1,3 +1,5 @@
+// File: client/src/pages/MealDetails.jsx
+//this page is no longer needed
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 

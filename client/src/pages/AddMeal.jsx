@@ -1,3 +1,4 @@
+// File: client/src/pages/AddMeal.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
