@@ -6,12 +6,12 @@ import { API_BASE } from '../config';
 export default function Register() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
-  const API_BASE = import.meta.env.VITE_API_URL || '';
+  // const API_BASE = import.meta.env.VITE_API_URL || '';
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${API_BASE}/api/auth/register`, {
+    const res = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
