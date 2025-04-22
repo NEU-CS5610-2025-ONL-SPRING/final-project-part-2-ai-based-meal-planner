@@ -6,7 +6,7 @@ import { API_BASE } from '../config';
 export default function Register() {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
-  //const API_BASE = import.meta.env.VITE_API_URL || '';
+  const API_BASE = import.meta.env.VITE_API_URL || '';
 
 
   const handleSubmit = async (e) => {

@@ -1,3 +1,8 @@
-//client/src/config.js
 // client/src/config.js
-export const API_BASE = import.meta.env.VITE_API_URL || '';
+
+// console.log(import.meta.env.VITE_API_URL)
+
+// if (!import.meta.env.VITE_API_URL) {
+//     throw new Error('Missing VITE_API_URL in environment variables');
+//   }
+// export const API_BASE = import.meta.env.VITE_API_URL;
