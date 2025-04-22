@@ -1,14 +1,10 @@
 require('dotenv').config();
 
-
-const app = express();
-
-const PORT = parseInt(process.env.PORT) || 8080;
-
-
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const routes = require('./routes');
+const app = express();
+const PORT = parseInt(process.env.PORT) || 8080;
 
 const mealplanRoutes = require('./routes/mealplans');
 const mealIdeasRoute = require('./routes/mealIdeas');
