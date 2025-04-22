@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const routes = require('./routes');
 const app = express();
@@ -10,7 +11,7 @@ const mealplanRoutes = require('./routes/mealplans');
 const mealIdeasRoute = require('./routes/mealIdeas');
 
 
-
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api', routes);
